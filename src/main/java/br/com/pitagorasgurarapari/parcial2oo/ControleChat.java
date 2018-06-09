@@ -2,7 +2,6 @@ package br.com.pitagorasgurarapari.parcial2oo;
 
 import com.pusher.client.PusherOptions;
 import com.pusher.client.channel.Channel;
-import com.pusher.client.channel.SubscriptionEventListener;
 import com.pusher.rest.Pusher;
 import java.util.HashMap;
 import java.util.Map;
