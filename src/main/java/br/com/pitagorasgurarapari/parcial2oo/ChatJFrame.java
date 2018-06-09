@@ -6,7 +6,6 @@
 package br.com.pitagorasgurarapari.parcial2oo;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.pusher.client.channel.SubscriptionEventListener;
 import javax.swing.JOptionPane;
 
@@ -26,8 +25,8 @@ public class ChatJFrame extends javax.swing.JFrame {
         initComponents();
 
         String nome = JOptionPane.showInputDialog("Qual o seu nome?");
-        user = new Usuario(nome);
-        controleChat = new ControleChat();
+        //TODO INSTANCIAR UM NOVO USUÁRIO NA VARIÁVEL user PASSANDO A VARIÁVEL nome COMO PARÂMETRO
+        //TODO INSTANCIAR A VARIÁVEL controleChat
         controleChat.inicializaPusher();
 
         controleChat.getChannel().bind("imagem-acao", new SubscriptionEventListener() {
@@ -36,9 +35,11 @@ public class ChatJFrame extends javax.swing.JFrame {
                 System.out.println(data);
                 Gson gson = new Gson();
                 Mensagem mensagem = gson.fromJson(data, Mensagem.class);
-                jTextAreaChatContent.setText(
-                        jTextAreaChatContent.getText() + "\n" + 
-                        mensagem.getUsuario() + ": " + mensagem.getMensagem());
+                //TODO ALTERAR TEXTO DA VARIÁVEL jTextAreaChatContent 
+                //PARA EXIBIR A MENSAGEM RECEBIDA (JÁ DISPONÍVEL NA VARIÁVEL mensagem)
+                //VOCÊ DEVE EXIBIR O CONTEÚDO QUE JÁ HAVIA NO JTEXTAREA + O NOVO CONTEUDO
+                //NO FORMATO NOME: MENSAGEM
+                //USE O MÉTODO getText() PARA OBTER O CONTEÚDO QUE JÁ HAVIA NO JTEXTAREA
             }
         });
 

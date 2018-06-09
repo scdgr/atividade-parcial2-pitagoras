@@ -21,9 +21,9 @@ public class ControleChat {
     private Channel channel;
     com.pusher.client.Pusher pusherCliente;
     
-    private static final String APP_ID ="531130";
-    private static final String KEY = "d9fa8bf48773fde111e7";
-    private static final String SECRET = "8728c7c304bd5a5f4319";
+    private static final String APP_ID ="//TODO COLOCAR ID DO SEU APP";
+    private static final String KEY = "//TODO COLOCAR A SUA CHAVE";
+    private static final String SECRET = "//TODO COLOCAR O SEU SEGREDO";
     
     public void inicializaPusher(){
         pusher = new Pusher(APP_ID, KEY, SECRET);
@@ -34,14 +34,15 @@ public class ControleChat {
         options.setCluster("us2");
         pusherCliente = new com.pusher.client.Pusher(KEY, options);
         channel = pusherCliente.subscribe("pitagoras-guarapari");
-        pusherCliente.connect();
+        //TODO CONECTAR O pusherClient para poder receber as mensagens
+        
     }
     
     public void enviarMenssagem(Usuario user, String mensagem){
         Map<String,String> conteudo = new HashMap<>();
         conteudo.put("usuario", user.getNome());
         conteudo.put("mensagem", mensagem);
-        pusher.trigger("pitagoras-guarapari", "imagem-acao", conteudo);
+        //TODO FAZER O ENVIO DA MENSAGEM USANDO O OBJETO pusher
     }
 
     public Channel getChannel() {
