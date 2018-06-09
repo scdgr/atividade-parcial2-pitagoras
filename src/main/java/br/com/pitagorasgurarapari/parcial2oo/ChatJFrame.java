@@ -25,6 +25,8 @@ public class ChatJFrame extends javax.swing.JFrame {
         initComponents();
 
         String nome = JOptionPane.showInputDialog("Qual o seu nome?");
+        user = new Usuario(nome);
+        controleChat = new ControleChat();
         //TODO INSTANCIAR UM NOVO USUÁRIO NA VARIÁVEL user PASSANDO A VARIÁVEL nome COMO PARÂMETRO
         //TODO INSTANCIAR A VARIÁVEL controleChat
         controleChat.inicializaPusher();
@@ -35,11 +37,14 @@ public class ChatJFrame extends javax.swing.JFrame {
                 System.out.println(data);
                 Gson gson = new Gson();
                 Mensagem mensagem = gson.fromJson(data, Mensagem.class);
-                //TODO ALTERAR TEXTO DA VARIÁVEL jTextAreaChatContent 
-                //PARA EXIBIR A MENSAGEM RECEBIDA (JÁ DISPONÍVEL NA VARIÁVEL mensagem)
-                //VOCÊ DEVE EXIBIR O CONTEÚDO QUE JÁ HAVIA NO JTEXTAREA + O NOVO CONTEUDO
-                //NO FORMATO NOME: MENSAGEM
-                //USE O MÉTODO getText() PARA OBTER O CONTEÚDO QUE JÁ HAVIA NO JTEXTAREA
+                String textoAtual = jTextAreaChatContent.getText();
+                jTextAreaChatContent.setText(String.format("%s\n%s: %s", 
+                        textoAtual, mensagem.getUsuario(), mensagem.getMensagem()));
+                //TODO ALTERAR TEXTO DA VARIÁVEL jTextAreaChatContent *ok
+                //PARA EXIBIR A MENSAGEM RECEBIDA (JÁ DISPONÍVEL NA VARIÁVEL mensagem) *ok
+                //VOCÊ DEVE EXIBIR O CONTEÚDO QUE JÁ HAVIA NO JTEXTAREA + O NOVO CONTEUDO *ok
+                //NO FORMATO NOME: MENSAGEM *ok
+                //USE O MÉTODO getText() PARA OBTER O CONTEÚDO QUE JÁ HAVIA NO JTEXTAREA *ok
             }
         });
 
@@ -121,7 +126,7 @@ public class ChatJFrame extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
